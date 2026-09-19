@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fffaf2" />
+    <title>Woordje — 荷兰语单词学习</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="Woordje 首页">
+        <span class="brand-mark">W</span>
+        <span>Woordje</span>
+      </a>
+      <nav aria-label="主导航">
+        <button class="nav-link active" data-view="learn">学习</button>
+        <button class="nav-link" data-view="quiz">测试</button>
+        <button class="nav-link" data-view="words">词库</button>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button" id="themeButton" aria-label="切换深色模式">☼</button>
+        <div class="streak"><span>🔥</span><strong id="streakCount">3</strong><span class="streak-label">天</span></div>
+      </div>
+    </header>
+
+    <main>
+      <section class="view active" id="learnView">
+        <div class="hero">
+          <div>
+            <p class="eyebrow">GOEDEMORGEN, LEERLING!</p>
+            <h1>每天一点，<br /><em>荷兰语更近一点。</em></h1>
+            <p class="hero-copy">从生活中最常用的词开始，在轻松的节奏里建立你的荷兰语词汇量。</p>
+          </div>
+          <div class="daily-card">
+            <div class="daily-top"><span>今日目标</span><strong id="dailyPercent">40%</strong></div>
+            <div class="progress-track"><span id="dailyProgress"></span></div>
+            <p><b id="todayLearned">4</b> / 10 个单词</p>
+          </div>
+        </div>
+
+        <section class="learn-layout">
+          <aside class="level-panel">
+            <p class="panel-label">选择级别</p>
+            <div class="level-tabs" role="group" aria-label="级别筛选">
+              <button class="level-tab active" data-level="A1"><strong>A1</strong><span>入门</span></button>
+              <button class="level-tab" data-level="A2"><strong>A2</strong><span>基础</span></button>
+              <button class="level-tab" data-level="B1"><strong>B1</strong><span>进阶</span></button>
+            </div>
+            <div class="level-info">
+              <div class="level-ring"><span id="levelDone">18</span><small>/ 60</small></div>
+              <div><strong id="levelTitle">A1 入门</strong><p>已掌握词汇</p></div>
+            </div>
+            <p class="tip"><span>💡</span> 小提示：大声朗读能让单词记得更牢。</p>
+          </aside>
+
+          <div class="study-area">
+            <div class="section-heading">
+              <div><p class="eyebrow">DAILY WORDS</p><h2>今日单词</h2></div>
+              <span id="cardCounter">1 / 10</span>
+            </div>
+            <article class="word-card" id="wordCard">
+              <div class="card-tags"><span id="wordLevel">A1</span><span id="wordCategory">日常生活</span></div>
+              <button class="favorite-button" id="favoriteButton" aria-label="收藏单词">♡</button>
+              <div class="word-main">
+                <p class="article" id="wordArticle">de</p>
+                <h3 id="wordDutch">ochtend</h3>
+                <button class="sound-button" id="soundButton" aria-label="播放发音"><span>◖))</span> 听发音</button>
+                <p class="phonetic" id="wordPhonetic">/ˈɔx.tənt/</p>
+              </div>
+              <div class="divider"></div>
+              <div class="meaning"><span>中文释义</span><strong id="wordChinese">早晨，上午</strong></div>
+              <div class="example"><span>“</span><p id="wordExample">Goedemorgen! Wat een mooie ochtend.</p><small id="exampleChinese">早上好！多么美好的早晨。</small></div>
+            </article>
+            <div class="card-actions">
+              <button class="secondary-button" id="prevButton">← 上一个</button>
+              <button class="know-button" id="knowButton"><span>✓</span> 我认识</button>
+              <button class="primary-button" id="nextButton">下一个 →</button>
+            </div>
+            <div class="keyboard-tip"><kbd>←</kbd><kbd>→</kbd> 切换单词 <span>·</span> <kbd>空格</kbd> 播放发音</div>
+          </div>
+        </section>
+      </section>
+
+      <section class="view narrow-view" id="quizView">
+        <div class="page-title"><p class="eyebrow">MINI QUIZ</p><h1>来检验一下吧</h1><p>根据荷兰语单词，选择正确的中文含义。</p></div>
+        <article class="quiz-card">
+          <div class="quiz-meta"><span id="quizLevel">A1</span><span id="quizCounter">第 1 / 5 题</span></div>
+          <button class="sound-button compact" id="quizSound">◖))</button>
+          <h2 id="quizWord">ochtend</h2>
+          <div class="quiz-options" id="quizOptions"></div>
+          <p class="quiz-feedback" id="quizFeedback"></p>
+          <button class="primary-button full" id="quizNext" disabled>确认答案</button>
+        </article>
+      </section>
+
+      <section class="view wide-view" id="wordsView">
+        <div class="page-title words-title"><div><p class="eyebrow">WOORDENBOEK</p><h1>我的词库</h1></div><label class="search"><span>⌕</span><input id="wordSearch" placeholder="搜索荷兰语或中文…" /></label></div>
+        <div class="filter-row"><button class="filter active" data-filter="all">全部</button><button class="filter" data-filter="A1">A1</button><button class="filter" data-filter="A2">A2</button><button class="filter" data-filter="B1">B1</button><button class="filter" data-filter="favorites">♡ 收藏</button></div>
+        <div class="word-list" id="wordList"></div>
+      </section>
+    </main>
+
+    <footer><span>Woordje</span><p>用一点点坚持，遇见更大的世界。</p><small>Made with zorg in Nederland</small></footer>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
